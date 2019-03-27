@@ -2,12 +2,9 @@
 A simple script to find and move duplicate images inside a folder using HaarPSI algorithm
 
 ## Usage:
-Process a folder of images finding the duplicates. The entire processcan be
-done both with a soft algorithm that simply hashes the images anda hard one
-that check for the similarity with a threshold. The duplicatesare move to a
-duplicate folder inside the checked one.
+Processes a folder of images finding the duplicates. The entire process can be done both with a soft algorithm that simply hashes the images and a hard one that checks for the similarity with a threshold. The duplicates are moved to a _duplicate_ folder inside the checked one.
 
-From the bash/command line just call the script move-by-fingerprint.py
+From the bash/command line just call the script _move-by-fingerprint.py_
 
 ### Command line arguments:
 
