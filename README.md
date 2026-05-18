@@ -1,19 +1,49 @@
 # PyImgDuplicateFinder
-A simple script to find and move duplicate images inside a folder using HaarPSI algorithm
 
-## Usage:
-Processes a folder of images finding the duplicates. The entire process can be done both with a soft algorithm that simply hashes the images and a hard one that checks for the similarity with a threshold. The duplicates are moved to a _duplicate_ folder inside the checked one.
+PyImgDuplicateFinder scans a folder of images, detects duplicates, and moves them into a `duplicate` subfolder.
 
-From the bash/command line just call the script _move-by-fingerprint.py_
+The tool supports two modes:
 
-### Command line arguments:
+- `S` (soft): hash-based duplicate detection
+- `H` (hard): similarity-based detection using HaarPSI and a threshold
 
-|arg|meaning|description|
-|:-|:-|:-|
-|-h, -help|[HELP]|shows the help message and exits|
-|-dir|DIR|the folder to check|
-|-mode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|[MODE]| the using mode desired (H = Hard, S = soft)|
-|-t|[T]|the threshold of similarity. a value between 0 and 1. the default is 0.5. only works with Hard Mode|
+## Requirements
 
-## Credits:
-The HaarPSI algorithm has been downloaded from http://www.haarpsi.org/
+- Python 3.8+
+
+## Usage
+
+Run from the repository root:
+
+```bash
+python move-by-fingerprint.py -dir <folder_path> -mode <S|H> [-t <threshold>]
+```
+
+Examples:
+
+```bash
+# Soft mode (faster)
+python move-by-fingerprint.py -dir ./images -mode S
+
+# Hard mode with custom similarity threshold
+python move-by-fingerprint.py -dir ./images -mode H -t 0.7
+```
+
+Detected duplicates are moved to:
+
+```text
+<folder_path>/duplicate/
+```
+
+## Command Line Arguments
+
+| Argument | Description |
+|:-|:-|
+| `-h`, `-help` | Show help and exit |
+| `-dir DIR` | Folder to analyze |
+| `-mode MODE` | Detection mode: `H` (hard) or `S` (soft) |
+| `-t T` | Similarity threshold in range `[0, 1]` (hard mode only, default `0.5`) |
+
+## Credits
+
+HaarPSI implementation source: http://www.haarpsi.org/
